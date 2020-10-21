@@ -11,7 +11,7 @@ void childTask()
 
 void parentTask()
 {
-	printf("Dan saya adalah bapaknya n");
+	printf("Dan saya adalah bapaknya \n");
 }
 
 int main(void)
