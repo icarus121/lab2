@@ -5,51 +5,52 @@
 #include <unistd.h>
 #include <string.h>
 
+char name[20];
 void childTask()
 {
-	printf("child process => PPID= %d, PID=%d\n", getppid(), getpid());
+	printf("Name:>");
+	scanf("%20s", name);
+	printf("Name %20s \n", name);
 }
 
 void parentTask()
 {
-	printf("Parent process => PID=%d\n", getpid());
-	printf("Waiting for child process to finish.\n");
+	printf("Job is done. \n");
 }
 void main()
 {
-	for (int i=0; i<13; i++)
+	for (int i=0; i<4; i++)
 	{
-		char name;
+		//char name[20];
 		pid_t pid = fork();
 
 		if(pid==0)
 		{
 			//char *name;
-			//printf("child process => PPID=%d, PID=%d\n", getppid(), getpid());
+			wait(NULL);
 			childTask();
+			//parentTask();
 			//wait(NULL);
-			printf("Name:>");
-			scanf("%c", &name);
-			printf("name %c \n", name);
-			exit(0);
+			//printf("Name:>");
+			//scanf("%20s", name);
+			//printf("name %20s \n", name);
+			return;
 		}
-		else if(pid>0)
+		else /*if(pid>0)*/
 		{
-			//printf("Parent process => PID=%d\n", getpid());
 			wait(NULL);
-			parentTask();
-			//wait(NULL);
-			//printf("Waiting for child processes to finish...\n");
-			wait(NULL);
-			printf("child process finished.\n");
-			printf("Job is done. \n");
-			//wait(NULL);
+			//childTask();
+			//parentTask();
 		}
-		else
-		{
-			printf("Unable to create child process. \n");
-		}
-	}
 
+			//wait(NULL);
+			//parentTask();
+			//wait(NULL);
+			//printf("Job is done. \n");
+			//wait(NULL);
+			//exit(EXIT_SUCCESS);
+	}
+	//wait(NULL);
+	parentTask();
 	return;
 }
