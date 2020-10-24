@@ -12,16 +12,17 @@ int main(void)
 
 		if(pid==0)
 		{
-			printf("Child process => PPID=%d, PID=%d\n", getppid(), getpid());
+			printf("Child process => PPID=%d, PID=%d \n", getppid(), getpid());
 			exit(0);
 		}
 		else
 		{
-			printf("Parent process => PID=%d\n", getpid());
+			printf("Parent process => PID=%d \n", getpid());
 			printf("Waiting for child processes to finish...\n");
 			wait(NULL);
-			printf("Child process finished.");
+			printf("Child process finished. \n");
 		}
-	return EXIT_SUCCESS;
+	//return EXIT_SUCCESS;
 	}
+	return EXIT_SUCCESS;
 }
